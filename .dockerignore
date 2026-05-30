@@ -1,0 +1,9 @@
+.git
+.gitignore
+backend/.venv
+backend/.env
+backend/app/data/app.db
+backend/tests
+__pycache__
+*.py[cod]
+.pytest_cache

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI 教育课程客服后台</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+    }
+
+    .page {
+      width: 1100px;
+      margin: 30px auto;
+    }
+
+    .header {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 26px;
+    }
+
+    .header p {
+      margin: 8px 0 0;
+      color: #6b7280;
+    }
+
+    .actions {
+      margin-top: 16px;
+    }
+
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+      margin-right: 8px;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      margin-left: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    }
+
+    .card-title {
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    .card-number {
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .section {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+      margin-bottom: 20px;
+    }
+
+    .section h2 {
+      margin-top: 0;
+    }
+
+    .record {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+      background: #fafafa;
+    }
+
+    .record-header {
+      font-size: 14px;
+      color: #6b7280;
+      margin-bottom: 10px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: #e0e7ff;
+      color: #3730a3;
+      margin-left: 6px;
+    }
+
+    .tag-danger {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+
+    .question {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .answer {
+      white-space: pre-wrap;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .empty {
+      color: #6b7280;
+      padding: 20px;
+      background: #f9fafb;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1>AI 教育课程客服后台</h1>
+      <p>查看用户咨询记录、AI 回复、意图识别结果和转人工工单。</p>
+      <div class="actions">
+        <button onclick="loadData()">刷新数据</button>
+        <a href="/">返回聊天页面</a>
+        <a href="/docs">接口文档</a>
+        <a href="/logout">退出登录</a>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-title">总咨询数</div>
+        <div id="totalCount" class="card-number">0</div>
+      </div>
+      <div class="card">
+        <div class="card-title">待处理工单数</div>
+        <div id="handoffCount" class="card-number">0</div>
+      </div>
+      <div class="card">
+        <div class="card-title">自动解决数</div>
+        <div id="autoCount" class="card-number">0</div>
+        <div class="card">
+        <div class="card-title">满意率</div>
+        <div id="satisfactionRate" class="card-number">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+  <h2>运营分析</h2>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card-title">自动解决率</div>
+      <div id="autoResolvedRate" class="card-number">0%</div>
+    </div>
+    <div class="card">
+      <div class="card-title">转人工率</div>
+      <div id="handoffRate" class="card-number">0%</div>
+    </div>
+    <div class="card">
+      <div class="card-title">未命中问题数</div>
+      <div id="unansweredCount" class="card-number">0</div>
+    </div>
+    <div class="card">
+      <div class="card-title">已处理工单数</div>
+      <div id="resolvedTickets" class="card-number">0</div>
+    </div>
+  </div>
+
+  <h3>意图分布</h3>
+  <div id="intentStats"></div>
+
+  <h3>高频未命中问题</h3>
+  <div id="topUnansweredList"></div>
+</div>
+    <div class="section">
+      <h2>转人工工单</h2>
+      <div id="ticketsList"></div>
+    </div>
+
+    <div class="section">
+      <h2>聊天记录</h2>
+      <div id="conversationsList"></div>
+    </div>
+  </div>
+
+  <script>
+    async function fetchJson(url) {
+      const response = await fetch(url);
+      return await response.json();
+    }
+
+    function renderConversations(conversations) {
+      const container = document.getElementById("conversationsList");
+
+      if (!conversations || conversations.length === 0) {
+        container.innerHTML = '<div class="empty">暂无聊天记录。</div>';
+        return;
+      }
+
+      const html = conversations.slice().reverse().map(item => {
+        const handoffTag = item.need_handoff
+          ? '<span class="tag tag-danger">需要转人工</span>'
+          : '<span class="tag">AI 自动处理</span>';
+
+        const sources = item.sources && item.sources.length > 0
+          ? item.sources.join("、")
+          : "无";
+
+        return `
+          <div class="record">
+            <div class="record-header">
+              ${item.time} ｜ 用户：${item.user_id}
+              <span class="tag">${item.intent}</span>
+              ${handoffTag}
+            </div>
+            <div class="question">用户问题：${item.user_message}</div>
+            <div class="answer">AI 回答：${item.assistant_answer}</div>
+            <div class="record-header">来源：${sources}</div>
+          </div>
+        `;
+      }).join("");
+
+      container.innerHTML = html;
+    }
+
+   function renderTickets(tickets) {
+  const container = document.getElementById("ticketsList");
+
+  if (!tickets || tickets.length === 0) {
+    container.innerHTML = '<div class="empty">暂无转人工工单。</div>';
+    return;
+  }
+
+  const html = tickets.slice().reverse().map(item => {
+    const statusTag = item.status === "resolved"
+      ? '<span class="tag">已处理</span>'
+      : '<span class="tag tag-danger">待处理</span>';
+
+    const actionButton = item.status === "resolved"
+      ? '<div class="record-header">处理时间：' + (item.resolved_time || "未知") + '</div>'
+      : '<button onclick="resolveTicket(\'' + item.ticket_id + '\')">标记已处理</button>';
+
+    return `
+      <div class="record">
+        <div class="record-header">
+          ${item.ticket_id} ｜ ${item.time}
+          ${statusTag}
+          <span class="tag">${item.intent}</span>
+        </div>
+        <div class="question">用户问题：${item.user_message}</div>
+        <div class="answer">转人工原因：${item.reason}</div>
+        <div class="answer">AI 已回复：${item.assistant_answer}</div>
+        ${actionButton}
+      </div>
+    `;
+  }).join("");
+
+  container.innerHTML = html;
+}
+
+function renderIntentStats(intentCounts) {
+  const container = document.getElementById("intentStats");
+
+  const entries = Object.entries(intentCounts || {});
+
+  if (entries.length === 0) {
+    container.innerHTML = '<div class="empty">暂无意图统计。</div>';
+    return;
+  }
+
+  container.innerHTML = entries.map(([intent, count]) => {
+    return `
+      <div class="record">
+        <div class="record-header">
+          <span class="tag">${intent}</span>
+        </div>
+        <div>咨询数量：${count}</div>
+      </div>
+    `;
+  }).join("");
+}
+
+
+function renderTopUnanswered(items) {
+  const container = document.getElementById("topUnansweredList");
+
+  if (!items || items.length === 0) {
+    container.innerHTML = '<div class="empty">暂无未命中问题。</div>';
+    return;
+  }
+
+  container.innerHTML = items.map(item => {
+    return `
+      <div class="record">
+        <div class="question">${item.message}</div>
+        <div class="record-header">出现次数：${item.count}</div>
+      </div>
+    `;
+  }).join("");
+}
+async function resolveTicket(ticketId) {
+  const confirmed = confirm("确认将这个工单标记为已处理吗？");
+
+  if (!confirmed) {
+    return;
+  }
+
+  await fetch("/api/handoff-tickets/" + ticketId + "/resolve", {
+    method: "POST"
+  });
+
+  loadData();
+}
+    async function loadData() {
+      const conversations = await fetchJson("/api/conversations");
+      const tickets = await fetchJson("/api/handoff-tickets");
+      const feedbackStats = await fetchJson("/api/feedback-stats");
+      const analytics = await fetchJson("/api/analytics");
+
+      document.getElementById("totalCount").textContent = conversations.length;
+      document.getElementById("handoffCount").textContent =
+      tickets.filter(item => item.status !== "resolved").length;
+      document.getElementById("autoCount").textContent =
+        conversations.filter(item => !item.need_handoff).length;
+        document.getElementById("satisfactionRate").textContent =
+      feedbackStats.satisfaction_rate + "%";
+      document.getElementById("autoResolvedRate").textContent =
+  analytics.auto_resolved_rate + "%";
+
+document.getElementById("handoffRate").textContent =
+  analytics.handoff_rate + "%";
+
+document.getElementById("unansweredCount").textContent =
+  analytics.unanswered_count;
+
+document.getElementById("resolvedTickets").textContent =
+  analytics.resolved_tickets;
+
+renderIntentStats(analytics.intent_counts);
+renderTopUnanswered(analytics.top_unanswered);
+
+      renderConversations(conversations);
+      renderTickets(tickets);
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

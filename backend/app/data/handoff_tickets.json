@@ -1,0 +1,93 @@
+[
+  {
+    "ticket_id": "TICKET-0001",
+    "time": "2026-05-30 19:56:55",
+    "status": "open",
+    "user_id": "web_user_001",
+    "intent": "refund_policy",
+    "reason": "退款或退费问题，需要人工确认报名时间、学习进度和退款规则",
+    "user_message": "报名后可以退款吗？",
+    "assistant_answer": "我先根据知识库帮你说明：\n\n【Python 零基础就业班课程介绍】Python 零基础就业班适合没有编程经验的学员。课程从环境安装、变量、条件判断、循环、函数、面向对象开始，逐步过渡到爬虫、数据处理和项目实战。课程周期为 12 周，每周 3 次直播课，配套录播回放、作业批改和班主任督学。\n【AI 大模型应用开发课课程介绍】AI 大模型应用开发课面向有一定 Python 基础的学员，主要学习 Prompt Engineering、RAG 知识库、Agent 工具调用、LangChain、FastAPI 接口开发和企业级 AI 应用部署。课程周期为 10 周，适合想进入 AI 应用开发方向的学员。\n\n这个问题可能涉及人工确认或敏感服务流程，我建议为你转接人工客服继续处理。",
+    "sources": [
+      "Python 零基础就业班课程介绍",
+      "AI 大模型应用开发课课程介绍"
+    ]
+  },
+  {
+    "ticket_id": "TICKET-0002",
+    "time": "2026-05-30 19:57:06",
+    "status": "open",
+    "user_id": "web_user_001",
+    "intent": "human_service",
+    "reason": "用户明确要求人工客服",
+    "user_message": "我要找人工客服",
+    "assistant_answer": "我先根据知识库帮你说明：\n\n【Python 零基础就业班课程介绍】Python 零基础就业班适合没有编程经验的学员。课程从环境安装、变量、条件判断、循环、函数、面向对象开始，逐步过渡到爬虫、数据处理和项目实战。课程周期为 12 周，每周 3 次直播课，配套录播回放、作业批改和班主任督学。\n【AI 大模型应用开发课课程介绍】AI 大模型应用开发课面向有一定 Python 基础的学员，主要学习 Prompt Engineering、RAG 知识库、Agent 工具调用、LangChain、FastAPI 接口开发和企业级 AI 应用部署。课程周期为 10 周，适合想进入 AI 应用开发方向的学员。\n\n这个问题可能涉及人工确认或敏感服务流程，我建议为你转接人工客服继续处理。",
+    "sources": [
+      "Python 零基础就业班课程介绍",
+      "AI 大模型应用开发课课程介绍"
+    ]
+  },
+  {
+    "ticket_id": "TICKET-0003",
+    "time": "2026-05-30 20:00:03",
+    "status": "open",
+    "user_id": "web_user_001",
+    "intent": "human_service",
+    "reason": "用户明确要求人工客服",
+    "user_message": "我要找人工客服",
+    "assistant_answer": "我先根据知识库帮你说明：\n\n【Python 零基础就业班课程介绍】Python 零基础就业班适合没有编程经验的学员。课程从环境安装、变量、条件判断、循环、函数、面向对象开始，逐步过渡到爬虫、数据处理和项目实战。课程周期为 12 周，每周 3 次直播课，配套录播回放、作业批改和班主任督学。\n【AI 大模型应用开发课课程介绍】AI 大模型应用开发课面向有一定 Python 基础的学员，主要学习 Prompt Engineering、RAG 知识库、Agent 工具调用、LangChain、FastAPI 接口开发和企业级 AI 应用部署。课程周期为 10 周，适合想进入 AI 应用开发方向的学员。\n\n这个问题可能涉及人工确认或敏感服务流程，我建议为你转接人工客服继续处理。",
+    "sources": [
+      "Python 零基础就业班课程介绍",
+      "AI 大模型应用开发课课程介绍"
+    ]
+  },
+  {
+    "ticket_id": "TICKET-0004",
+    "time": "2026-05-30 20:05:15",
+    "status": "resolved",
+    "user_id": "web_user_001",
+    "intent": "course_consultation",
+    "reason": "知识库未命中，需要人工补充或确认",
+    "user_message": "你们有没有日语课程？",
+    "assistant_answer": "我暂时没有在课程知识库中找到足够准确的信息。为了避免误导你，建议转人工客服进一步确认。",
+    "sources": [],
+    "resolved_time": "2026-05-30 20:49:47"
+  },
+  {
+    "ticket_id": "TICKET-0005",
+    "time": "2026-05-30 20:21:17",
+    "status": "resolved",
+    "user_id": "web_user_001",
+    "intent": "human_service",
+    "reason": "用户明确要求人工客服",
+    "user_message": "我要找人工客服",
+    "assistant_answer": "我暂时没有在课程知识库中找到足够准确的信息。为了避免误导你，建议转人工客服进一步确认。",
+    "sources": [],
+    "resolved_time": "2026-05-30 20:21:56"
+  },
+  {
+    "ticket_id": "TICKET-0006",
+    "time": "2026-05-30 20:21:27",
+    "status": "resolved",
+    "user_id": "web_user_001",
+    "intent": "refund_policy",
+    "reason": "退款或退费问题，需要人工确认报名时间、学习进度和退款规则",
+    "user_message": "我想退款",
+    "assistant_answer": "我先根据知识库帮你说明：\n\n【退款与转班政策】报名后 7 天内且课程学习进度不超过 10%，可以申请无理由退款。超过 7 天或学习进度超过 10%，需要根据实际学习情况扣除已学习课时和服务费用。退款、转班和延期属于敏感服务问题，建议转人工客服处理。\n\n这个问题可能涉及人工确认或敏感服务流程，我建议为你转接人工客服继续处理。",
+    "sources": [
+      "退款与转班政策"
+    ],
+    "resolved_time": "2026-05-30 20:21:49"
+  },
+  {
+    "ticket_id": "TICKET-0007",
+    "time": "2026-05-30 20:49:54",
+    "status": "open",
+    "user_id": "web_user_001",
+    "intent": "other",
+    "reason": "知识库未命中，需要人工补充或确认",
+    "user_message": "蒋涵",
+    "assistant_answer": "我暂时没有在课程知识库中找到足够准确的信息。为了避免误导你，建议转人工客服进一步确认。",
+    "sources": []
+  }
+]

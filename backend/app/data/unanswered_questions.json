@@ -1,0 +1,23 @@
+[
+  {
+    "time": "2026-05-30 20:05:15",
+    "user_id": "web_user_001",
+    "message": "你们有没有日语课程？",
+    "intent": "course_consultation",
+    "status": "waiting_for_knowledge_update"
+  },
+  {
+    "time": "2026-05-30 20:21:17",
+    "user_id": "web_user_001",
+    "message": "我要找人工客服",
+    "intent": "human_service",
+    "status": "waiting_for_knowledge_update"
+  },
+  {
+    "time": "2026-05-30 20:49:54",
+    "user_id": "web_user_001",
+    "message": "蒋涵",
+    "intent": "other",
+    "status": "waiting_for_knowledge_update"
+  }
+]

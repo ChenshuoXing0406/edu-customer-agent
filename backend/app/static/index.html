@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI 教育课程客服</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      background: #f4f6f8;
+    }
+
+    .page {
+      width: 900px;
+      margin: 40px auto;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+    }
+
+    .header {
+      background: #2563eb;
+      color: white;
+      padding: 20px 24px;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .header p {
+      margin: 8px 0 0;
+      opacity: 0.9;
+    }
+
+    .chat-box {
+      height: 520px;
+      padding: 24px;
+      overflow-y: auto;
+      background: #f9fafb;
+    }
+
+    .message {
+      margin-bottom: 18px;
+      max-width: 75%;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+
+    .user {
+      margin-left: auto;
+      background: #2563eb;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 16px 16px 4px 16px;
+    }
+
+    .bot {
+      background: white;
+      color: #111827;
+      padding: 12px 16px;
+      border-radius: 16px 16px 16px 4px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .meta {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+     .feedback {
+    margin-top: 10px;
+    }
+
+    .feedback button {
+    padding: 6px 10px;
+    font-size: 13px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    background: white;
+    color: #374151;
+    cursor: pointer;
+    margin-right: 6px;
+    }
+
+    .feedback button:hover {
+    background: #f3f4f6;
+    }
+    .input-area {
+      display: flex;
+      gap: 12px;
+      padding: 18px;
+      border-top: 1px solid #e5e7eb;
+      background: white;
+    }
+
+    input {
+      flex: 1;
+      padding: 14px;
+      font-size: 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      outline: none;
+    }
+
+    button {
+      padding: 0 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .tips {
+      padding: 12px 24px;
+      background: #eef2ff;
+      color: #374151;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1>AI 教育课程客服</h1>
+      <p>支持课程咨询、价格咨询、试听预约、退款政策、账号问题和证书问题</p>
+    </div>
+
+    <div class="tips">
+      你可以试着问：Python 课程适合零基础吗？AI 大模型课程多少钱？报名后可以退款吗？
+    </div>
+
+    <div id="chatBox" class="chat-box">
+      <div class="message bot">
+        你好，我是 AI 教育课程客服。你可以咨询课程、价格、试听、报名、退款、账号或证书相关问题。
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input id="messageInput" placeholder="请输入你的问题..." />
+      <button onclick="sendMessage()">发送</button>
+    </div>
+  </div>
+
+  <script>
+    const chatBox = document.getElementById("chatBox");
+    const messageInput = document.getElementById("messageInput");
+
+    function addMessage(content, type, meta = "") {
+      const div = document.createElement("div");
+      div.className = "message " + type;
+
+      if (meta) {
+        div.innerHTML = content + '<div class="meta">' + meta + '</div>';
+      } else {
+        div.textContent = content;
+      }
+
+      chatBox.appendChild(div);
+      chatBox.scrollTop = chatBox.scrollHeight;
+    }
+
+    async function submitFeedback(conversationId, rating) {
+  await fetch("/api/feedback", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      conversation_id: conversationId,
+      rating: rating
+    })
+  });
+
+  alert("反馈已提交，感谢你的评价。");
+}
+    async function sendMessage() {
+      const message = messageInput.value.trim();
+
+      if (!message) {
+        return;
+      }
+
+      addMessage(message, "user");
+      messageInput.value = "";
+
+      addMessage("正在查询知识库，请稍等...", "bot");
+
+      try {
+        const response = await fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            user_id: "web_user_001",
+            message: message
+          })
+        });
+
+        const data = await response.json();
+
+        chatBox.removeChild(chatBox.lastChild);
+
+        const sourcesText = data.sources && data.sources.length > 0
+          ? "来源：" + data.sources.join("、")
+          : "未匹配到知识库来源";
+
+        const handoffText = data.need_handoff
+          ? "需要转人工：是"
+          : "需要转人工：否";
+
+        const meta = "意图：" + data.intent + "｜" + handoffText + "｜" + sourcesText;
+
+        const feedbackHtml =
+  data.answer +
+  '<div class="feedback">' +
+  '<button onclick="submitFeedback(\'' + data.conversation_id + '\', \'up\')">👍 有帮助</button>' +
+  '<button onclick="submitFeedback(\'' + data.conversation_id + '\', \'down\')">👎 没帮助</button>' +
+  '</div>';
+
+addMessage(feedbackHtml, "bot", meta);
+      } catch (error) {
+        chatBox.removeChild(chatBox.lastChild);
+        addMessage("请求失败，请确认后端服务正在运行。", "bot");
+      }
+    }
+
+    messageInput.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>

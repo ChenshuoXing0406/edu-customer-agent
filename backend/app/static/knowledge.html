@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>知识库管理</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      background: #f3f4f6;
+      color: #111827;
+    }
+
+    .page {
+      width: 1100px;
+      margin: 30px auto;
+    }
+
+    .header, .section {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+      margin-bottom: 20px;
+    }
+
+    h1, h2 {
+      margin-top: 0;
+    }
+
+    a {
+      color: #2563eb;
+      text-decoration: none;
+      margin-right: 12px;
+    }
+
+    label {
+      display: block;
+      margin-top: 14px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 10px;
+      font-size: 15px;
+    }
+
+    textarea {
+      height: 130px;
+      resize: vertical;
+    }
+
+    button {
+      margin-top: 16px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #2563eb;
+      color: white;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    button:hover {
+      background: #1d4ed8;
+    }
+
+    .record {
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      background: #fafafa;
+    }
+
+    .meta {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      background: #e0e7ff;
+      color: #3730a3;
+      margin-left: 6px;
+    }
+
+    .success {
+      color: #047857;
+      margin-top: 12px;
+    }
+
+    .empty {
+      color: #6b7280;
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 16px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="header">
+      <h1>知识库管理</h1>
+      <p>这里可以查看未命中问题，并补充新的课程知识。</p>
+      <a href="/">返回聊天页面</a>
+      <a href="/admin">返回客服后台</a>
+      <a href="/docs">接口文档</a>
+      <a href="/logout">退出登录</a>
+    </div>
+
+    <div class="section">
+      <h2>新增知识库内容</h2>
+
+      <label>标题</label>
+      <input id="titleInput" placeholder="例如：日语入门课程介绍" />
+
+      <label>分类</label>
+      <select id="categoryInput">
+        <option value="course">course：课程介绍</option>
+        <option value="price">price：价格政策</option>
+        <option value="trial">trial：试听预约</option>
+        <option value="refund">refund：退款政策</option>
+        <option value="account">account：账号问题</option>
+        <option value="certificate">certificate：证书问题</option>
+      </select>
+
+      <label>关键词，用逗号分隔</label>
+      <input id="keywordsInput" placeholder="例如：日语, 日语课程, 零基础, 入门, 课程" />
+
+      <label>知识库内容</label>
+      <textarea id="contentInput" placeholder="例如：日语入门课程适合零基础学员，课程从五十音图、基础发音、常用句型开始……"></textarea>
+
+      <button onclick="createKnowledge()">添加到知识库</button>
+      <div id="createResult" class="success"></div>
+    </div>
+
+    <div class="section">
+      <h2>未命中问题</h2>
+      <div id="unansweredList"></div>
+    </div>
+
+    <div class="section">
+      <h2>当前知识库</h2>
+      <div id="knowledgeList"></div>
+    </div>
+  </div>
+
+  <script>
+    async function fetchJson(url) {
+      const response = await fetch(url);
+      return await response.json();
+    }
+
+    function renderUnanswered(items) {
+      const container = document.getElementById("unansweredList");
+
+      if (!items || items.length === 0) {
+        container.innerHTML = '<div class="empty">暂无未命中问题。</div>';
+        return;
+      }
+
+      container.innerHTML = items.slice().reverse().map(item => {
+        return `
+          <div class="record">
+            <div class="meta">${item.time} ｜ 用户：${item.user_id} <span class="tag">${item.intent}</span></div>
+            <div>${item.message}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    function renderKnowledge(items) {
+      const container = document.getElementById("knowledgeList");
+
+      if (!items || items.length === 0) {
+        container.innerHTML = '<div class="empty">暂无知识库内容。</div>';
+        return;
+      }
+
+      container.innerHTML = items.slice().reverse().map(item => {
+        return `
+          <div class="record">
+            <div class="meta">${item.id} <span class="tag">${item.category}</span></div>
+            <strong>${item.title}</strong>
+            <p>${item.content}</p>
+            <div class="meta">关键词：${item.keywords.join("、")}</div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    async function loadData() {
+      const unanswered = await fetchJson("/api/unanswered-questions");
+      const knowledge = await fetchJson("/api/knowledge");
+
+      renderUnanswered(unanswered);
+      renderKnowledge(knowledge);
+    }
+
+    async function createKnowledge() {
+      const title = document.getElementById("titleInput").value.trim();
+      const category = document.getElementById("categoryInput").value;
+      const keywordsText = document.getElementById("keywordsInput").value.trim();
+      const content = document.getElementById("contentInput").value.trim();
+
+      if (!title || !keywordsText || !content) {
+        alert("请填写标题、关键词和内容。");
+        return;
+      }
+
+      const keywords = keywordsText
+        .replaceAll("，", ",")
+        .split(",")
+        .map(item => item.trim())
+        .filter(Boolean);
+
+      const response = await fetch("/api/knowledge", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          title,
+          category,
+          keywords,
+          content
+        })
+      });
+
+      const data = await response.json();
+
+      document.getElementById("createResult").textContent =
+        "添加成功：" + data.item.title;
+
+      document.getElementById("titleInput").value = "";
+      document.getElementById("keywordsInput").value = "";
+      document.getElementById("contentInput").value = "";
+
+      loadData();
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

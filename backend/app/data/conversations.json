@@ -1,0 +1,184 @@
+[
+  {
+    "time": "2026-05-30 19:56:37",
+    "user_id": "web_user_001",
+    "user_message": "Python 课程适合零基础吗？",
+    "assistant_answer": "根据课程知识库，我为你查到：\n\n【Python 零基础就业班课程介绍】Python 零基础就业班适合没有编程经验的学员。课程从环境安装、变量、条件判断、循环、函数、面向对象开始，逐步过渡到爬虫、数据处理和项目实战。课程周期为 12 周，每周 3 次直播课，配套录播回放、作业批改和班主任督学。\n【AI 大模型应用开发课课程介绍】AI 大模型应用开发课面向有一定 Python 基础的学员，主要学习 Prompt Engineering、RAG 知识库、Agent 工具调用、LangChain、FastAPI 接口开发和企业级 AI 应用部署。课程周期为 10 周，适合想进入 AI 应用开发方向的学员。\n\n你还可以继续问我课程适合人群、价格、试听、报名、退款或证书相关问题。",
+    "intent": "course_consultation",
+    "need_handoff": false,
+    "sources": [
+      "Python 零基础就业班课程介绍",
+      "AI 大模型应用开发课课程介绍"
+    ]
+  },
+  {
+    "time": "2026-05-30 19:56:55",
+    "user_id": "web_user_001",
+    "user_message": "报名后可以退款吗？",
+    "assistant_answer": "我先根据知识库帮你说明：\n\n【Python 零基础就业班课程介绍】Python 零基础就业班适合没有编程经验的学员。课程从环境安装、变量、条件判断、循环、函数、面向对象开始，逐步过渡到爬虫、数据处理和项目实战。课程周期为 12 周，每周 3 次直播课，配套录播回放、作业批改和班主任督学。\n【AI 大模型应用开发课课程介绍】AI 大模型应用开发课面向有一定 Python 基础的学员，主要学习 Prompt Engineering、RAG 知识库、Agent 工具调用、LangChain、FastAPI 接口开发和企业级 AI 应用部署。课程周期为 10 周，适合想进入 AI 应用开发方向的学员。\n\n这个问题可能涉及人工确认或敏感服务流程，我建议为你转接人工客服继续处理。",
+    "intent": "refund_policy",
+    "need_handoff": true,
+    "sources": [
+      "Python 零基础就业班课程介绍",
+      "AI 大模型应用开发课课程介绍"
+    ]
+  },
+  {
+    "time": "2026-05-30 19:57:06",
+    "user_id": "web_user_001",
+    "user_message": "我要找人工客服",
+    "assistant_answer": "我先根据知识库帮你说明：\n\n【Python 零基础就业班课程介绍】Python 零基础就业班适合没有编程经验的学员。课程从环境安装、变量、条件判断、循环、函数、面向对象开始，逐步过渡到爬虫、数据处理和项目实战。课程周期为 12 周，每周 3 次直播课，配套录播回放、作业批改和班主任督学。\n【AI 大模型应用开发课课程介绍】AI 大模型应用开发课面向有一定 Python 基础的学员，主要学习 Prompt Engineering、RAG 知识库、Agent 工具调用、LangChain、FastAPI 接口开发和企业级 AI 应用部署。课程周期为 10 周，适合想进入 AI 应用开发方向的学员。\n\n这个问题可能涉及人工确认或敏感服务流程，我建议为你转接人工客服继续处理。",
+    "intent": "human_service",
+    "need_handoff": true,
+    "sources": [
+      "Python 零基础就业班课程介绍",
+      "AI 大模型应用开发课课程介绍"
+    ]
+  },
+  {
+    "time": "2026-05-30 19:59:55",
+    "user_id": "web_user_001",
+    "user_message": "Python 课程适合零基础吗？",
+    "assistant_answer": "根据课程知识库，我为你查到：\n\n【Python 零基础就业班课程介绍】Python 零基础就业班适合没有编程经验的学员。课程从环境安装、变量、条件判断、循环、函数、面向对象开始，逐步过渡到爬虫、数据处理和项目实战。课程周期为 12 周，每周 3 次直播课，配套录播回放、作业批改和班主任督学。\n【AI 大模型应用开发课课程介绍】AI 大模型应用开发课面向有一定 Python 基础的学员，主要学习 Prompt Engineering、RAG 知识库、Agent 工具调用、LangChain、FastAPI 接口开发和企业级 AI 应用部署。课程周期为 10 周，适合想进入 AI 应用开发方向的学员。\n\n你还可以继续问我课程适合人群、价格、试听、报名、退款或证书相关问题。",
+    "intent": "course_consultation",
+    "need_handoff": false,
+    "sources": [
+      "Python 零基础就业班课程介绍",
+      "AI 大模型应用开发课课程介绍"
+    ]
+  },
+  {
+    "time": "2026-05-30 20:00:03",
+    "user_id": "web_user_001",
+    "user_message": "我要找人工客服",
+    "assistant_answer": "我先根据知识库帮你说明：\n\n【Python 零基础就业班课程介绍】Python 零基础就业班适合没有编程经验的学员。课程从环境安装、变量、条件判断、循环、函数、面向对象开始，逐步过渡到爬虫、数据处理和项目实战。课程周期为 12 周，每周 3 次直播课，配套录播回放、作业批改和班主任督学。\n【AI 大模型应用开发课课程介绍】AI 大模型应用开发课面向有一定 Python 基础的学员，主要学习 Prompt Engineering、RAG 知识库、Agent 工具调用、LangChain、FastAPI 接口开发和企业级 AI 应用部署。课程周期为 10 周，适合想进入 AI 应用开发方向的学员。\n\n这个问题可能涉及人工确认或敏感服务流程，我建议为你转接人工客服继续处理。",
+    "intent": "human_service",
+    "need_handoff": true,
+    "sources": [
+      "Python 零基础就业班课程介绍",
+      "AI 大模型应用开发课课程介绍"
+    ]
+  },
+  {
+    "time": "2026-05-30 20:02:04",
+    "user_id": "web_user_001",
+    "user_message": "Python 课程适合零基础吗？",
+    "assistant_answer": "根据课程知识库，我为你查到：\n\n【Python 零基础就业班课程介绍】Python 零基础就业班适合没有编程经验的学员。课程从环境安装、变量、条件判断、循环、函数、面向对象开始，逐步过渡到爬虫、数据处理和项目实战。课程周期为 12 周，每周 3 次直播课，配套录播回放、作业批改和班主任督学。\n\n你还可以继续问我课程适合人群、价格、试听、报名、退款或证书相关问题。",
+    "intent": "course_consultation",
+    "need_handoff": false,
+    "sources": [
+      "Python 零基础就业班课程介绍"
+    ]
+  },
+  {
+    "time": "2026-05-30 20:02:14",
+    "user_id": "web_user_001",
+    "user_message": "AI 大模型课程多少钱？",
+    "assistant_answer": "根据课程知识库，我为你查到：\n\n【AI 大模型应用开发课课程介绍】AI 大模型应用开发课面向有一定 Python 基础的学员，主要学习 Prompt Engineering、RAG 知识库、Agent 工具调用、LangChain、FastAPI 接口开发和企业级 AI 应用部署。课程周期为 10 周，适合想进入 AI 应用开发方向的学员。\n\n你还可以继续问我课程适合人群、价格、试听、报名、退款或证书相关问题。",
+    "intent": "price_consultation",
+    "need_handoff": false,
+    "sources": [
+      "AI 大模型应用开发课课程介绍"
+    ]
+  },
+  {
+    "time": "2026-05-30 20:02:20",
+    "user_id": "web_user_001",
+    "user_message": "你们有没有日语课程？",
+    "assistant_answer": "根据课程知识库，我为你查到：\n\n【Python 零基础就业班课程介绍】Python 零基础就业班适合没有编程经验的学员。课程从环境安装、变量、条件判断、循环、函数、面向对象开始，逐步过渡到爬虫、数据处理和项目实战。课程周期为 12 周，每周 3 次直播课，配套录播回放、作业批改和班主任督学。\n【AI 大模型应用开发课课程介绍】AI 大模型应用开发课面向有一定 Python 基础的学员，主要学习 Prompt Engineering、RAG 知识库、Agent 工具调用、LangChain、FastAPI 接口开发和企业级 AI 应用部署。课程周期为 10 周，适合想进入 AI 应用开发方向的学员。\n\n你还可以继续问我课程适合人群、价格、试听、报名、退款或证书相关问题。",
+    "intent": "course_consultation",
+    "need_handoff": false,
+    "sources": [
+      "Python 零基础就业班课程介绍",
+      "AI 大模型应用开发课课程介绍"
+    ]
+  },
+  {
+    "time": "2026-05-30 20:04:54",
+    "user_id": "web_user_001",
+    "user_message": "Python 课程适合零基础吗？",
+    "assistant_answer": "根据课程知识库，我为你查到：\n\n【Python 零基础就业班课程介绍】Python 零基础就业班适合没有编程经验的学员。课程从环境安装、变量、条件判断、循环、函数、面向对象开始，逐步过渡到爬虫、数据处理和项目实战。课程周期为 12 周，每周 3 次直播课，配套录播回放、作业批改和班主任督学。\n\n你还可以继续问我课程适合人群、价格、试听、报名、退款或证书相关问题。",
+    "intent": "course_consultation",
+    "need_handoff": false,
+    "sources": [
+      "Python 零基础就业班课程介绍"
+    ]
+  },
+  {
+    "time": "2026-05-30 20:05:02",
+    "user_id": "web_user_001",
+    "user_message": "AI 大模型课程多少钱？",
+    "assistant_answer": "根据课程知识库，我为你查到：\n\n【AI 大模型应用开发课课程介绍】AI 大模型应用开发课面向有一定 Python 基础的学员，主要学习 Prompt Engineering、RAG 知识库、Agent 工具调用、LangChain、FastAPI 接口开发和企业级 AI 应用部署。课程周期为 10 周，适合想进入 AI 应用开发方向的学员。\n\n你还可以继续问我课程适合人群、价格、试听、报名、退款或证书相关问题。",
+    "intent": "price_consultation",
+    "need_handoff": false,
+    "sources": [
+      "AI 大模型应用开发课课程介绍"
+    ]
+  },
+  {
+    "time": "2026-05-30 20:05:15",
+    "user_id": "web_user_001",
+    "user_message": "你们有没有日语课程？",
+    "assistant_answer": "我暂时没有在课程知识库中找到足够准确的信息。为了避免误导你，建议转人工客服进一步确认。",
+    "intent": "course_consultation",
+    "need_handoff": true,
+    "sources": []
+  },
+  {
+    "time": "2026-05-30 20:16:08",
+    "user_id": "web_user_001",
+    "user_message": "你们有没有日语课程？",
+    "assistant_answer": "根据课程知识库，我为你查到：\n\n【日语零基础入门课程介绍】日语零基础入门课程适合没有日语基础的学员。课程从五十音图、基础发音、常用寒暄语、基础语法和日常会话开始，帮助学员建立日语学习基础。课程周期为 8 周，每周 2 次直播课，配套录播回放和课后练习。\n\n你还可以继续问我课程适合人群、价格、试听、报名、退款或证书相关问题。",
+    "intent": "course_consultation",
+    "need_handoff": false,
+    "sources": [
+      "日语零基础入门课程介绍"
+    ]
+  },
+  {
+    "time": "2026-05-30 20:21:17",
+    "user_id": "web_user_001",
+    "user_message": "我要找人工客服",
+    "assistant_answer": "我暂时没有在课程知识库中找到足够准确的信息。为了避免误导你，建议转人工客服进一步确认。",
+    "intent": "human_service",
+    "need_handoff": true,
+    "sources": []
+  },
+  {
+    "time": "2026-05-30 20:21:27",
+    "user_id": "web_user_001",
+    "user_message": "我想退款",
+    "assistant_answer": "我先根据知识库帮你说明：\n\n【退款与转班政策】报名后 7 天内且课程学习进度不超过 10%，可以申请无理由退款。超过 7 天或学习进度超过 10%，需要根据实际学习情况扣除已学习课时和服务费用。退款、转班和延期属于敏感服务问题，建议转人工客服处理。\n\n这个问题可能涉及人工确认或敏感服务流程，我建议为你转接人工客服继续处理。",
+    "intent": "refund_policy",
+    "need_handoff": true,
+    "sources": [
+      "退款与转班政策"
+    ]
+  },
+  {
+    "conversation_id": "CHAT-0015",
+    "time": "2026-05-30 20:37:30",
+    "user_id": "web_user_001",
+    "user_message": "Python 课程适合零基础吗？",
+    "assistant_answer": "根据课程知识库，我为你查到：\n\n【Python 零基础就业班课程介绍】Python 零基础就业班适合没有编程经验的学员。课程从环境安装、变量、条件判断、循环、函数、面向对象开始，逐步过渡到爬虫、数据处理和项目实战。课程周期为 12 周，每周 3 次直播课，配套录播回放、作业批改和班主任督学。\n\n你还可以继续问我课程适合人群、价格、试听、报名、退款或证书相关问题。",
+    "intent": "course_consultation",
+    "need_handoff": false,
+    "sources": [
+      "Python 零基础就业班课程介绍"
+    ],
+    "feedback": "up",
+    "feedback_time": "2026-05-30 20:37:32"
+  },
+  {
+    "conversation_id": "CHAT-0016",
+    "time": "2026-05-30 20:49:54",
+    "user_id": "web_user_001",
+    "user_message": "蒋涵",
+    "assistant_answer": "我暂时没有在课程知识库中找到足够准确的信息。为了避免误导你，建议转人工客服进一步确认。",
+    "intent": "other",
+    "need_handoff": true,
+    "sources": [],
+    "feedback": "down",
+    "feedback_time": "2026-05-30 20:49:56"
+  }
+]

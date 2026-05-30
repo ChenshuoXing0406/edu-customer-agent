@@ -1,0 +1,13 @@
+services:
+  edu-customer-agent:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - path: ./backend/.env
+        required: false
+    volumes:
+      - ./backend/app/data:/app/app/data
+    restart: unless-stopped
